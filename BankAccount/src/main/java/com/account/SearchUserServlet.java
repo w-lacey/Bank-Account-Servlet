@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/TransferServlet")
+@WebServlet("/SearchUserServlet")
 public class SearchUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     Connection con;
@@ -30,19 +31,22 @@ public class SearchUserServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-		String path = "Transfer.jsp";
+		String path = "/Transfer.jsp";
+		sc=getServletContext();
 		SqlConnection db = new SqlConnection();
 		Customer customer; 
 		con = db.getConnection();
 		String searchEmail = request.getParameter("customerSearchEmail");
 		try {
 			customer = db.getCustomer(searchEmail);
-			if(customer!=null) {
-				
+			if(customer == null) {
+				path = "/SearchUser.jsp";
+				request.setAttribute("error", "User not found! Try again");
+			}else {
+				request.setAttribute("returnedUser", searchEmail);
 			}
-			else {
-				request.setAttribute("error", "");
-			}
+			RequestDispatcher rd = sc.getRequestDispatcher(path);
+			rd.forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

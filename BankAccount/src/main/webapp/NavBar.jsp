@@ -11,7 +11,7 @@
 		<ul class="nav">
 			<li style="display:inline"><a href="Profile.jsp">Home</a></li>
 			<li style="display:inline"><a href="Deposit.jsp">Deposit Money</a></li>
-			<li style="display:inline"><a href="Transfer.jsp">Transfer Money</a></li>
+			<li style="display:inline"><a href="SearchUser.jsp">Transfer Money</a></li>
 			<li style="display:inline"><a href="TransactionHistory.jsp">Transaction History</a></li>
 		</ul>
 </body>
