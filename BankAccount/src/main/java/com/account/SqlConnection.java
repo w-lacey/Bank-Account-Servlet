@@ -25,21 +25,21 @@ public class SqlConnection {
 		SqlConnection db = new SqlConnection();
 		String sql = "SELECT balance FROM accounts WHERE accountID=?";
 		String sql2 = "UPDATE accounts SET balance=? WHERE accountID=?";
-		
+		Double newBalance = 0.0;
 		con = db.getConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1,accountID);
 		ResultSet rs = ps.executeQuery();
 		if(rs.next()) {
 			Double oldBalance = Double.valueOf(rs.getString(1));
-			Double newBalance = oldBalance + Double.valueOf(amount);
+			newBalance = oldBalance + Double.valueOf(amount);
 			PreparedStatement ps2 = con.prepareStatement(sql2);
 			ps2.setDouble(1,newBalance);
 			ps2.setInt(2, accountID);
 			ps2.execute();
-			return newBalance;
 		}
-		return null;
+		con.close();
+		return newBalance;
 	}
 	public void createAccount(int customerID) throws SQLException {
 		SqlConnection db = new SqlConnection();
@@ -83,20 +83,7 @@ public class SqlConnection {
 		con.close();	
 		return accountNumber;
 	}
-	public Double getBalance(String email) throws SQLException{
-		SqlConnection db = new SqlConnection();
-		String sql = "SELECT balance FROM accounts, customer WHERE accounts.customerID = customer.customerID AND customer.email=?";
-		Double balance = 0.0;
-		con = db.getConnection();
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1,email);
-		ResultSet rs = ps.executeQuery();
-		if(rs.next()) {
-			balance = rs.getDouble(1);
-			return balance;
-		}
-		return balance;
-	}
+	
 	public boolean verifyLogin(String email, String password) throws SQLException {
 		SqlConnection db = new SqlConnection();
 		String sql = "SELECT * FROM customer WHERE email=? and password=?";
@@ -108,24 +95,11 @@ public class SqlConnection {
         ResultSet rs = ps.executeQuery();
         if(rs.next()) {
         	verify = true;
-        	return verify;
         }
         return verify;
 	}
-	public int getAccountNumber(String email) throws SQLException {
-		String sql = "SELECT accounts.accountNumber FROM accounts, customer WHERE accounts.customerID = customer.customerID and customer.email=?";
-		SqlConnection db = new SqlConnection();
-		int accountNumber = 0;
-		con = db.getConnection();
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1,email);
-		ResultSet rs = ps.executeQuery();
-        if(rs.next()) {
-        	accountNumber = rs.getInt(1);
-        	return accountNumber;
-        }
-        return accountNumber;
-	}
+	
+	//Retrieves customer data for LoginServlet
 	public Customer getCustomer(String email) throws SQLException {
 		String sql = "SELECT * FROM customer WHERE email=?";
 		SqlConnection db = new SqlConnection();
@@ -137,9 +111,11 @@ public class SqlConnection {
 			Customer customer = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 			return customer;
 		}
+		con.close();
 		return null;
 		
 	}
+	//Retrieves customer's account data for LoginServlet
 	public Account getAccount(int customerID) throws SQLException {
 		String sql = "SELECT * FROM accounts, customer WHERE customer.customerID=? AND customer.customerID=accounts.customerID";
 		SqlConnection db = new SqlConnection();
@@ -151,6 +127,7 @@ public class SqlConnection {
 			Account account = new Account(rs.getInt(1), rs.getInt(2), rs.getDouble(3), rs.getInt(4));
 			return account;
 		}
+		con.close();
 		return null;
 	}
 
