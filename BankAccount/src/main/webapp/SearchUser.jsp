@@ -11,6 +11,11 @@
 <body>
 	<h1>Transfer</h1>
 	<jsp:include page="NavBar.jsp" /><br>
-	<c:out value="${returnedUser}"/>
+	<h3>Enter email of user</h3>
+	<form action="SearchUserServlet" method="post">
+		<input type="email" name="customerSearchEmail" placeholder="email">
+		<input type="submit">
+	</form>
+	<c:out value="${error}"/>
 </body>
 </html>
