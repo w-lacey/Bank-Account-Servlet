@@ -67,6 +67,7 @@ public class SqlConnection {
 		con.close();
 		return result;
 	}
+	//Creates unique account number for dashboard. Only for aesthetic purposes.
 	public int generateAccountNumber() throws SQLException {
 		SqlConnection db = new SqlConnection();
 		Random rand = new Random();
