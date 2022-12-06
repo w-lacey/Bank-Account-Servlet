@@ -14,7 +14,9 @@
 	<h3>Current Balance: $<c:out value="${account.balance}" /></h3>
 	<br>
 	<form action="DepositServlet" method="post">
-		<input type="number" step=0.00 name="depositAmount" placeholder="Deposit Amount"><br>
+		<label>
+			<input type="number" step=0.00 name="depositAmount" placeholder="Deposit Amount">
+		</label><br>
 		<input type="submit" value="Submit">
 	</form>
 </body>
