@@ -15,7 +15,7 @@
 	<br>
 	<form action="DepositServlet" method="post">
 		<label>
-			<input type="number" step=0.00 name="depositAmount" placeholder="Deposit Amount">
+			<input type="number" step="0.01" name="depositAmount" placeholder="Deposit Amount"><br>
 		</label><br>
 		<input type="submit" value="Submit">
 	</form>

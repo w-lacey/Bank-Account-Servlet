@@ -12,5 +12,10 @@
 	<h1>Transfer</h1>
 	<jsp:include page="NavBar.jsp" /><br>
 	<c:out value="${returnedUser}"/>
+	<form action="TransferServlet" method="post">
+		<input type="number" step="0.01" name="transferAmount" placeholder="transfer amount">
+		<input type="submit" value="confirm">
+	</form>
+	$<c:out value="${error}" />
 </body>
 </html>
