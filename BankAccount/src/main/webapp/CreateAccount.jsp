@@ -10,10 +10,18 @@
 <body>
 	<h1>Create Account</h1>
 	<form action="CreateAccountServlet" method="post">
-		<input type="text" name="firstNameInput">
-		<input type="text" name="lastNameInput">
-		<input type="email" name="emailInput">
-		<input type="password" name="passwordInput">
+		<label>
+			<input type="text" name="firstNameInput">
+		</label>
+		<label>
+			<input type="text" name="lastNameInput">
+		</label>
+		<label>
+			<input type="email" name="emailInput">
+		</label>
+		<label>
+			<input type="password" name="passwordInput">
+		</label>
 		<input type="submit" value="submit">
 	</form>
 </body>
