@@ -38,7 +38,7 @@ h3{
 }
 
 ul.nav {
-  padding-left: 0px;
+  padding-left: 0;
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #3D99CE;
@@ -54,10 +54,6 @@ ul.nav > li:hover {
 ul.nav > li > a {
   color: white;
   text-decoration: none;
-}
-
-#headerDiv{
-	display:inline-block;
 }
 
 
