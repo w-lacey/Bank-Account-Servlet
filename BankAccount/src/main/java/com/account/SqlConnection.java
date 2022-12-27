@@ -188,6 +188,26 @@ public class SqlConnection {
 
         return null;
     }
+    
+    public long insertTransaction(Transaction transaction) throws SQLException {
+    	String        sql = "INSERT INTO transactions VALUES(?,?,?,?,?,?)";
+        SqlConnection db  = new SqlConnection();
+        long result;
+        con = db.getConnection();
+
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setString(1, null);
+        ps.setInt(2, transaction.getSendingAccountID());
+        ps.setInt(3, transaction.getRecipientAccountID());
+        ps.setString(4, transaction.getTransactionDate().toString());
+        ps.setDouble(5, transaction.getTransactionAmount());
+        ps.setString(6, transaction.getTransactionType());
+        
+        result = ps.executeUpdate();
+        con.close();
+        return result;
+    }
 }
 
 

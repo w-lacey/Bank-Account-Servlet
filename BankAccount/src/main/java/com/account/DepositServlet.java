@@ -4,6 +4,10 @@ import java.io.IOException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -19,7 +23,7 @@ public class DepositServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     Connection                con;
     ServletContext            sc;
-
+    Transaction transaction;
     public DepositServlet() {
         super();
     }
@@ -35,9 +39,8 @@ public class DepositServlet extends HttpServlet {
             throws ServletException, IOException {
         doGet(request, response);
         sc = getServletContext();
-
+        
         SqlConnection db = new SqlConnection();
-
         con = db.getConnection();
 
         HttpSession session       = request.getSession();
@@ -47,9 +50,11 @@ public class DepositServlet extends HttpServlet {
 
         try {
             Double newBalance = db.updateBalance(customer.getEmail(), depositAmount + account.getBalance());
-
+            
             account.setBalance(newBalance);
             session.setAttribute("account", account);
+            transaction = new Transaction(account.getAccountID(), account.getAccountID(), LocalDateTime.now().toString(), depositAmount, "Deposit");
+            db.insertTransaction(transaction);
         } catch (SQLException e) {
             e.printStackTrace();
         }
