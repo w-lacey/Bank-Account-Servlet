@@ -10,19 +10,25 @@
 <body>
 	<h1>Create Account</h1>
 	<form action="CreateAccountServlet" method="post">
-		<label>
+		<label for="firstNameInput">First Name</label>
+		<div>
 			<input type="text" name="firstNameInput">
-		</label>
-		<label>
+		</div>
+		<label for="lastNameInput">Last Name</label>
+		<div>
 			<input type="text" name="lastNameInput">
-		</label>
-		<label>
+		</div>
+		<label for="emailInput">Email</label>
+		<div>
 			<input type="email" name="emailInput">
-		</label>
-		<label>
+		</div>
+		<label for="passwordInput">Password</label>
+		<div>
 			<input type="password" name="passwordInput">
-		</label>
-		<input type="submit" value="submit">
+		</div>
+		<div>
+			<input type="submit" value="submit">
+		</div>
 	</form>
 </body>
 </html>

@@ -152,10 +152,11 @@ public class SqlConnection {
     public Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts", "andrew", "password");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts", "admin", "password");
             System.out.println("Database connection established");
         } catch (Exception e) {
             System.err.println("Cannot connect to database server");
+            e.printStackTrace();
         }
 
         return con;
