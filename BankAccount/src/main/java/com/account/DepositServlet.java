@@ -50,7 +50,6 @@ public class DepositServlet extends HttpServlet {
 
         try {
             Double newBalance = db.updateBalance(customer.getEmail(), depositAmount + account.getBalance());
-            
             account.setBalance(newBalance);
             session.setAttribute("account", account);
             transaction = new Transaction(account.getAccountID(), account.getAccountID(), LocalDateTime.now().toString(), depositAmount, "Deposit");
@@ -64,6 +63,3 @@ public class DepositServlet extends HttpServlet {
         rd.forward(request, response);
     }
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com

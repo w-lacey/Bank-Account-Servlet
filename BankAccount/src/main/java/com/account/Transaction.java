@@ -3,6 +3,13 @@ package com.account;
 import java.util.Date;
 
 public class Transaction {
+	@Override
+	public String toString() {
+		return "Transaction [transactionID=" + transactionID + ", sendingAccountID=" + sendingAccountID
+				+ ", recipientAccountID=" + recipientAccountID + ", transactionDate=" + transactionDate
+				+ ", transactionAmount=" + transactionAmount + ", transactionType=" + transactionType + "]";
+	}
+
 	public int transactionID;
 	private int sendingAccountID;
 	private int recipientAccountID;
@@ -26,6 +33,7 @@ public class Transaction {
 	public void setTransactionID(int transactionID) {
 		this.transactionID = transactionID;
 	}
+
 
 	public int getSendingAccountID() {
 		return sendingAccountID;

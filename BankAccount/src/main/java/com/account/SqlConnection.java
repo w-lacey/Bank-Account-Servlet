@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
 import java.util.Random;
 
 public class SqlConnection {
@@ -67,7 +67,7 @@ public class SqlConnection {
             ps.setInt(1, accountNumber);
             rs = ps.executeQuery();
         }
-
+        rs.close();
         con.close();
 
         return accountNumber;
@@ -97,7 +97,6 @@ public class SqlConnection {
         rs.next();
 
         Double newBalance = rs.getDouble(1);
-
         con.close();
 
         return newBalance;
@@ -152,7 +151,7 @@ public class SqlConnection {
     public Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts", "andrew", "password");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts", "admin", "password");
             System.out.println("Database connection established");
         } catch (Exception e) {
             System.err.println("Cannot connect to database server");
@@ -208,7 +207,61 @@ public class SqlConnection {
         con.close();
         return result;
     }
+    
+    public ArrayList<Transaction> retrieveAllTransactions(int customerID) throws SQLException{
+    	String sql = "SELECT * FROM transactions WHERE transactions.recipientAccountID = ? OR transactions.sendingAccountID = ?";
+    	SqlConnection db  = new SqlConnection();
+        con = db.getConnection();
+        ArrayList<Transaction> allTransactionsList = new ArrayList<Transaction>();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, customerID);
+        ps.setInt(2, customerID);
+        ResultSet  rs = ps.executeQuery();
+        while(rs.next()) {
+        	Transaction transaction = new Transaction(rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6));
+        	allTransactionsList.add(transaction);
+        }
+		return allTransactionsList;
+    }
+    
+    public ArrayList<Transaction> retrieveAllDeposits(int customerID) throws SQLException{
+    	String sql = "SELECT * FROM transactions, customer WHERE transactions.recipientAccountID = customer.customerID AND transactions.recipientAccountID = ? AND transactions.transactionType = ?";
+    	SqlConnection db  = new SqlConnection();
+        con = db.getConnection();
+        ArrayList<Transaction> DepositsTransactionsList = new ArrayList<Transaction>();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, customerID);
+        ps.setString(2, "Deposit");
+        ResultSet  rs = ps.executeQuery();
+        while(rs.next()) {
+        	Transaction transaction = new Transaction(rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6));
+        	DepositsTransactionsList.add(transaction);
+        }
+        ps.close();
+        con.close();
+        rs.close();
+		return DepositsTransactionsList;
+    }
+    
+    public ArrayList<Transaction> retrieveAllTransfers(int customerID) throws SQLException{
+    	String sql = "SELECT * FROM transactions, customer WHERE transactions.transactionType = ? AND customer.customerID = ? AND customer.customerID = transactions.sendingAccountID";
+    	SqlConnection db  = new SqlConnection();
+        con = db.getConnection();
+        ArrayList<Transaction> TransfersTransactionsList = new ArrayList<Transaction>();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, "Transfer");
+        ps.setInt(2, customerID);
+        
+        ResultSet  rs = ps.executeQuery();
+        while(rs.next()) {
+        	Transaction transaction = new Transaction(rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getString(6));
+        	TransfersTransactionsList.add(transaction);
+        	System.out.println("tRANSFER AMOUNTS:" + transaction.getTransactionAmount());
+        }
+        ps.close();
+        con.close();
+        rs.close();
+		return TransfersTransactionsList;
+    }
+    
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com

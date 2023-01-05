@@ -68,4 +68,3 @@ public class LoginServlet extends HttpServlet {
 }
 
 
-//~ Formatted by Jindent --- http://www.jindent.com
