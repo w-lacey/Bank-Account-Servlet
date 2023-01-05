@@ -155,6 +155,7 @@ public class SqlConnection {
             System.out.println("Database connection established");
         } catch (Exception e) {
             System.err.println("Cannot connect to database server");
+            e.printStackTrace();
         }
 
         return con;
