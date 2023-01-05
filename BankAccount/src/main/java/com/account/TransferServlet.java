@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -45,7 +46,6 @@ public class TransferServlet extends HttpServlet {
         String        transferEmail  = hs.getAttribute("returnedEmail").toString();
         SqlConnection db             = new SqlConnection();
         Double        transferAmount = Double.valueOf(request.getParameter("transferAmount"));
-
         try {
             if (transferAmount <= account.getBalance()) {
                 path = "/Profile.jsp";
@@ -57,6 +57,8 @@ public class TransferServlet extends HttpServlet {
                 db.updateBalance(transferEmail, transferAmount);
                 account.setBalance(newBalance);
                 hs.setAttribute("account", account);
+                Transaction transaction = new Transaction(account.getAccountID(), account.getAccountID(), LocalDateTime.now().toString(), transferAmount, "Transfer");
+                db.insertTransaction(transaction);
             } else {
                 request.setAttribute("error", "The entered amount exceeds your balance!");
             }
