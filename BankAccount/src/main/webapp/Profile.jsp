@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>Account Dashboard</h1>
-	<jsp:include page="NavBar.jsp" /><br>
+	<jsp:include page="/Login/NavBar.jsp"  /><br>
 	<table>
 		<tr>
 			<th>Account Number</th>
