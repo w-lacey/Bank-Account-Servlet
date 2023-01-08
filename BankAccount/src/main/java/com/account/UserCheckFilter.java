@@ -13,31 +13,58 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Servlet Filter implementation class UserCheckFilter
+ */
 @WebFilter("/*")
 public class UserCheckFilter extends HttpFilter implements Filter {
        
+    /**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
-	public UserCheckFilter() {
+	/**
+     * @see HttpFilter#HttpFilter()
+     */
+    public UserCheckFilter() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * @see Filter#destroy()
+	 */
 	public void destroy() {
+		// TODO Auto-generated method stub
 	}
 
-	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest request = (HttpServletRequest) req;
-		HttpServletResponse response = (HttpServletResponse) res;
-		HttpSession session = request.getSession(false);
-		if (session.getAttribute("customer") == null) {
-		     response.sendRedirect("index.jsp");
-		} else{
-			chain.doFilter(request, response);
-		}
-		
+	/**
+	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
+	 */
+	
+		@Override
+	    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws ServletException, IOException {    
+	        HttpServletRequest request = (HttpServletRequest) req;
+	        HttpServletResponse response = (HttpServletResponse) res;
+	        HttpSession session = request.getSession(false);
+	        String loginURI = request.getContextPath() + "/index.jsp";
+
+	        boolean loggedIn = session != null && session.getAttribute("customer") != null;
+	        boolean loginRequest = request.getRequestURI().equals(loginURI);
+
+	        if (loggedIn || loginRequest) {
+	            chain.doFilter(request, response);
+	        } else {
+	            response.sendRedirect(loginURI);
+	        }
 	}
 
+	/**
+	 * @see Filter#init(FilterConfig)
+	 */
 	public void init(FilterConfig fConfig) throws ServletException {
+		// TODO Auto-generated method stub
 	}
 
 }

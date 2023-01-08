@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>Transfer</h1>
-	<jsp:include page="NavBar.jsp" /><br>
+	<jsp:include page="/Login/NavBar.jsp" /><br>
 	<h3>Enter email of user</h3>
 	<form action="SearchUserServlet" method="post">
 		<input type="email" name="customerSearchEmail" placeholder="email">

@@ -10,7 +10,9 @@
 </head>
 <body>
 	<h1>Deposit</h1>
-	<jsp:include page="NavBar.jsp" /><br>
+	<jsp:include page="/Login/NavBar.jsp"  /><br>
+	<jsp:include page="Logout.jsp" /><br>
+	
 	<h3>Current Balance: $<c:out value="${account.balance}" /></h3>
 	<br>
 	<form action="DepositServlet" method="post">

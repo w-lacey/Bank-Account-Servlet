@@ -9,16 +9,7 @@
 
 </head>
 <body>
-		<script>
-		$(function($) {
-			  let url = window.location.href;
-			  $('li a').each(function() {
-			    if (this.href === url) {
-			      $(this).closest('li').addClass('active');
-			    }
-			  });
-			});
-		</script>	
+
 		<ul class="nav">
 			<li style="display:inline" class="navLink"><a href="Profile.jsp">Home</a></li>
 			<li style="display:inline" class="navLink" ><a href="Deposit.jsp">Deposit Money</a></li>
