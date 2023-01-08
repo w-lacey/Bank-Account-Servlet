@@ -56,5 +56,9 @@ ul.nav > li > a {
   text-decoration: none;
 }
 
-
+ul.nav > li.active {
+  color: white;
+  text-decoration: none;
+  background-color: #2779BF;
+}
 

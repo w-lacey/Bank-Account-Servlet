@@ -19,7 +19,7 @@ public class DepositTransactionListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	SqlConnection db = new SqlConnection();
     ServletContext  sc;
-    String path = "/DepositTransactionList.jsp";
+    String path = "/AllTransactionsList.jsp";
     ArrayList<Transaction> DepositTransactionsList;
 
     public DepositTransactionListServlet() {
@@ -35,7 +35,7 @@ public class DepositTransactionListServlet extends HttpServlet {
 		try {
 			DepositTransactionsList = db.retrieveAllDeposits(customer.getCustomerID());
             System.out.println(DepositTransactionsList.size());
-            request.setAttribute("DepositTransactionsList",DepositTransactionsList);
+            request.setAttribute("transactionList",DepositTransactionsList);
 
 		} catch (SQLException e) {
 			e.printStackTrace();

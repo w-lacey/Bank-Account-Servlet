@@ -19,7 +19,7 @@ public class TransferTransactionListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	SqlConnection db = new SqlConnection();
     ServletContext  sc;
-    String path = "/TransferTransactionList.jsp";
+    String path = "/AllTransactionsList.jsp";
     ArrayList<Transaction> TransferTransactionsList;
    
     public TransferTransactionListServlet() {
@@ -34,7 +34,7 @@ public class TransferTransactionListServlet extends HttpServlet {
 		Customer customer = (Customer) session.getAttribute("customer");
 		try {
 			TransferTransactionsList = db.retrieveAllTransfers(customer.getCustomerID());
-            request.setAttribute("TransferTransactionsList",TransferTransactionsList);
+            request.setAttribute("transactionList",TransferTransactionsList);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
