@@ -11,7 +11,7 @@
 <body>
 	<h1>Deposit History</h1>
 	<jsp:include page="/NavBar/NavBar.jsp" /><br>
-	<jsp:include page="TransactionListNavBar.jsp" /><br>
+	<jsp:include page="/NavBar/TransactionListNavBar.jsp" /><br>
 	<table>
 		<tr>
 			<th>Account Number</th>
