@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 
                 hs.setAttribute("customer", customer);
                 hs.setAttribute("account", account);
-                path = "/Profile.jsp";
+                path = "/Profile/Profile.jsp";
             } else {
                 path = "/index.jsp";
                 request.setAttribute("error", "invalid login!! Please try again");

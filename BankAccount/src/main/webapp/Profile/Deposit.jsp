@@ -6,13 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Deposit</title>
-<link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<h1>Deposit</h1>
-	<jsp:include page="/Login/NavBar.jsp"  /><br>
-	<jsp:include page="Logout.jsp" /><br>
-	
+	<jsp:include page="/NavBar/NavBar.jsp" /><br>	
 	<h3>Current Balance: $<c:out value="${account.balance}" /></h3>
 	<br>
 	<form action="DepositServlet" method="post">

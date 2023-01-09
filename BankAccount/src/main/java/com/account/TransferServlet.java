@@ -36,7 +36,7 @@ public class TransferServlet extends HttpServlet {
             throws ServletException, IOException {
         doGet(request, response);
 
-        String      path = "/Transfer.jsp";
+        String      path = "Profile/Transfer.jsp";
         HttpSession hs   = request.getSession();
 
         sc = getServletContext();

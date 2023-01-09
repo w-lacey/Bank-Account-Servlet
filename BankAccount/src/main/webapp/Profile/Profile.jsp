@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Account</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<h1>Account Dashboard</h1>
-	<jsp:include page="/Login/NavBar.jsp"  /><br>
+	<jsp:include page="/NavBar/NavBar.jsp" /><br>
 	<table>
 		<tr>
 			<th>Account Number</th>

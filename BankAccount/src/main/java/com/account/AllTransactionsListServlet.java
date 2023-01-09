@@ -21,7 +21,7 @@ public class AllTransactionsListServlet extends HttpServlet {
 	
     SqlConnection db = new SqlConnection();
     ServletContext  sc;
-    String path = "/AllTransactionsList.jsp";
+    String path = "/Profile/AllTransactionsList.jsp";
     ArrayList<Transaction> AllTransactionsList;
     public AllTransactionsListServlet() {
         super();
