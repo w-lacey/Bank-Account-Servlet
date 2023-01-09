@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Create account</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<h1>Create Account</h1>
