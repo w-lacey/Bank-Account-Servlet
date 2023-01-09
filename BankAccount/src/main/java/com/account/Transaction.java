@@ -3,12 +3,6 @@ package com.account;
 import java.util.Date;
 
 public class Transaction {
-	@Override
-	public String toString() {
-		return "Transaction [transactionID=" + transactionID + ", sendingAccountID=" + sendingAccountID
-				+ ", recipientAccountID=" + recipientAccountID + ", transactionDate=" + transactionDate
-				+ ", transactionAmount=" + transactionAmount + ", transactionType=" + transactionType + "]";
-	}
 
 	public int transactionID;
 	private int sendingAccountID;

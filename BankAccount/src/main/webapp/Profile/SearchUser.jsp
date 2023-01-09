@@ -12,7 +12,7 @@
 	<h1>Transfer</h1>
 	<jsp:include page="/NavBar/NavBar.jsp" /><br>
 	<h3>Enter email of user</h3>
-	<form action="SearchUserServlet" method="post">
+	<form action="${pageContext.request.contextPath}/SearchUserServlet" method="post">
 		<input type="email" name="customerSearchEmail" placeholder="email">
 		<input type="submit">
 	</form>
