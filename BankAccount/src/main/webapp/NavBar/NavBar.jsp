@@ -13,7 +13,7 @@
 			<li style="display:inline" class="navLink"><a href="${pageContext.request.contextPath}/Profile/Profile.jsp">Home</a></li>
 			<li style="display:inline" class="navLink" ><a href="${pageContext.request.contextPath}/Profile/Deposit.jsp">Deposit Money</a></li>
 			<li style="display:inline" class="navLink" ><a href="${pageContext.request.contextPath}/Profile/SearchUser.jsp">Transfer Money</a></li>
-			<li style="display:inline" class="navLink" ><a href="AllTransactionsListServlet">Transaction History</a></li>
+			<li style="display:inline" class="navLink" ><a href="${pageContext.request.contextPath}/AllTransactionsListServlet">Transaction History</a></li>
 		</ul>
 </body>
 </html>

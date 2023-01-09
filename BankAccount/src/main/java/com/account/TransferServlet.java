@@ -48,7 +48,7 @@ public class TransferServlet extends HttpServlet {
         Double        transferAmount = Double.valueOf(request.getParameter("transferAmount"));
         try {
             if (transferAmount <= account.getBalance()) {
-                path = "/Profile.jsp";
+                path = "/Profile/Profile.jsp";
 
                 Double newBalance = account.getBalance() - transferAmount;
 

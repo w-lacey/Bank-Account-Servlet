@@ -14,8 +14,8 @@
 	<jsp:include page="/NavBar/TransactionListNavBar.jsp" /><br>
 	<table>
 		<tr>
-			<th>Account Number</th>
-			<th>Balance</th>
+			<th>Transaction Date</th>
+			<th>Transaction Amount</th>
 			<th>Transaction Type</th>
 		</tr>
 		<c:forEach items="${transactionList}" var="transaction">

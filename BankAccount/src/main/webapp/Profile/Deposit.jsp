@@ -12,7 +12,7 @@
 	<jsp:include page="/NavBar/NavBar.jsp" /><br>	
 	<h3>Current Balance: $<c:out value="${account.balance}" /></h3>
 	<br>
-	<form action="DepositServlet" method="post">
+	<form action="${pageContext.request.contextPath}/DepositServlet" method="post">
 		<label>
 			<input type="number" step="0.01" name="depositAmount" placeholder="Deposit Amount"><br>
 		</label><br>

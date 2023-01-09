@@ -9,7 +9,6 @@
 </head>
 <body>
 	<h1>Login</h1>
-	<jsp:include page="/NavBar/NavBar.jsp" /><br>	
 	<form action="LoginServlet" method="post">
 		<label for="emailInput">Email:</label>
 		<div>
