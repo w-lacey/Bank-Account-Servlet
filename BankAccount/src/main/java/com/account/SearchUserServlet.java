@@ -34,7 +34,7 @@ public class SearchUserServlet extends HttpServlet {
         doGet(request, response);
 
         HttpSession hs   = request.getSession();
-        String      path = "/Transfer.jsp";
+        String      path = "/Profile/Transfer.jsp";
 
         sc = getServletContext();
 
@@ -49,7 +49,7 @@ public class SearchUserServlet extends HttpServlet {
             customer = db.getCustomer(searchEmail);
 
             if (customer == null) {
-                path = "/SearchUser.jsp";
+                path = "Profile/SearchUser.jsp";
                 request.setAttribute("error", "User not found! Try again");
             } else {
                 hs.setAttribute("returnedEmail", searchEmail);

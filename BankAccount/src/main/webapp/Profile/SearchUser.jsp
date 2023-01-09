@@ -10,12 +10,12 @@
 </head>
 <body>
 	<h1>Transfer</h1>
-	<jsp:include page="/Login/NavBar.jsp"  /><br>
-	<c:out value="${returnedUser}"/>
-	<form action="TransferServlet" method="post">
-		<input type="number" step="0.01" name="transferAmount" placeholder="transfer amount">
-		<input type="submit" value="confirm">
+	<jsp:include page="/NavBar/NavBar.jsp" /><br>
+	<h3>Enter email of user</h3>
+	<form action="SearchUserServlet" method="post">
+		<input type="email" name="customerSearchEmail" placeholder="email">
+		<input type="submit">
 	</form>
-	$<c:out value="${error}" />
+	<c:out value="${error}"/>
 </body>
 </html>

@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Log in</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<h1>Login</h1>
-	<jsp:include page="NavBar.jsp" /><br>
+	<jsp:include page="/NavBar/NavBar.jsp" /><br>	
 	<form action="LoginServlet" method="post">
 		<label for="emailInput">Email:</label>
 		<div>

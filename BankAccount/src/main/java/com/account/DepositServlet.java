@@ -58,7 +58,7 @@ public class DepositServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        RequestDispatcher rd = sc.getRequestDispatcher("/Profile.jsp");
+        RequestDispatcher rd = sc.getRequestDispatcher("/Profile/Profile.jsp");
 
         rd.forward(request, response);
     }

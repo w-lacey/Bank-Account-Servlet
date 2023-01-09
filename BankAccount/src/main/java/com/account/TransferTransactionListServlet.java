@@ -19,7 +19,7 @@ public class TransferTransactionListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	SqlConnection db = new SqlConnection();
     ServletContext  sc;
-    String path = "/AllTransactionsList.jsp";
+    String path = "/Profile/AllTransactionsList.jsp";
     ArrayList<Transaction> TransferTransactionsList;
    
     public TransferTransactionListServlet() {

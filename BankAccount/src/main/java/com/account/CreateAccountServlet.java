@@ -57,7 +57,7 @@ public class CreateAccountServlet extends HttpServlet {
                 db.createAccount(customer.getCustomerID());
                 path = "/index.jsp";
             } else {
-                path = "/CreateAccount.jsp";
+                path = "/Profile/CreateAccount.jsp";
                 request.setAttribute("error", error);
             }
 
