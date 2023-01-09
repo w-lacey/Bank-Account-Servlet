@@ -62,3 +62,31 @@ ul.nav > li.active {
   background-color: #2779BF;
 }
 
+
+ul.transactionListNav{
+  padding-left: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+ul.transactionListNav > li {
+  display: inline-block;
+  background-color: #3D99CE;
+  padding: 10px 20px;
+}
+ul.transactionListNav > li:hover {
+  background-color: #2779BF;
+}
+ul.transactionListNav > li > a {
+  color: white;
+  text-decoration: none;
+}
+
+ul.transactionListNav > li.active {
+  color: white;
+  text-decoration: none;
+  background-color: #2779BF;
+}
+
+
+
